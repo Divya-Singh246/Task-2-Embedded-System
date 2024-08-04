@@ -1,0 +1,42 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include "DHT.h"
+
+#define DHTPIN 2      
+#define DHTTYPE DHT22 // DHT 22 (AM2302)
+
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2); 
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  dht.begin();
+}
+
+void loop() {
+  delay(2000); 
+
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(temperature)) {
+    lcd.setCursor(0, 0);
+    lcd.print("Failed to read");
+    lcd.setCursor(0, 1);
+    lcd.print("from DHT sensor");
+    return;
+  }
+
+  lcd.setCursor(0, 0);
+  lcd.print("Humidity: ");
+  lcd.print(humidity);
+  lcd.print(" %");
+
+  lcd.setCursor(0, 1);
+  lcd.print("Temp: ");
+  lcd.print(temperature);
+  lcd.print(" *C");
+
+ 
+}
