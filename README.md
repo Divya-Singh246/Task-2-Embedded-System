@@ -43,12 +43,10 @@ The project involves interfacing a DHT sensor with an Arduino to measure tempera
 1. **Virtual Interface Setup**:
    - Connect the DHT sensor to the Arduino (power, ground, and data pin).
    - Connect the LCD screen to the Arduino (power, ground, and communication pins).
-
 2. **Software Setup**:
    - Write the Arduino code to read data from the DHT sensor.
    - Display the data on the LCD screen or serial monitor.
    - Use libraries like `DHT` for sensor data and `LiquidCrystal` for LCD control.
-
 3. **Simulation**:
    - Create the circuit in the Wokwi simulator.
    - Upload and run the Arduino code in the simulator.
